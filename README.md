@@ -1,4 +1,4 @@
-# tapp
+# Flutter architecture project
 
 A new Flutter project.
 
