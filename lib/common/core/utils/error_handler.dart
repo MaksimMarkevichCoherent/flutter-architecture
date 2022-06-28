@@ -1,0 +1,1 @@
+void handleFlutterFatalError(Object error, StackTrace stack) {}
