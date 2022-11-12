@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:tapp/common/core/utils/push_notification_handler.dart';
 
 import '../../l10n/l10n.dart';
 import '../../networking/api_providers/authentication_provider.dart';
@@ -89,6 +91,12 @@ class _AppManagerState extends State<AppManager> with WidgetsBindingObserver {
           ),
           Provider<SecureRepository>(
             create: (_) => _secureRepository,
+          ),
+          Provider<PushNotificationHandler>(
+            lazy: false,
+            create: (context) => PushNotificationHandler(
+              firebaseMessaging: FirebaseMessaging.instance,
+            )..init(context),
           ),
         ],
         child: const _App(),
