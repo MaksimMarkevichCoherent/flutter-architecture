@@ -18,6 +18,7 @@ class WelcomeScreen extends StatelessWidget {
   final PageController _pageController = PageController();
   final _currentPageNotifier = ValueNotifier<int>(0);
 
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

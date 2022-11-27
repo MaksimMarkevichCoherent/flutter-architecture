@@ -36,7 +36,7 @@ class AppManager extends StatefulWidget {
 }
 
 class _AppManagerState extends State<AppManager> with WidgetsBindingObserver {
-  late SecureRepository _secureRepository;
+  late ISecureRepository _secureRepository;
   late SessionCubit _sessionCubit;
 
   @override
@@ -67,10 +67,8 @@ class _AppManagerState extends State<AppManager> with WidgetsBindingObserver {
 
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => ConnectivityCubit()..init()),
-        BlocProvider<SessionCubit>(
-          create: (_) => _sessionCubit,
-        ),
+        BlocProvider<ConnectivityCubit>(create: (_) => ConnectivityCubit()..init()),
+        BlocProvider<SessionCubit>(create: (_) => _sessionCubit),
         BlocProvider<LoadingCubit>(
           create: (_) => LoadingCubit(session: _sessionCubit)..init(),
         ),
@@ -83,16 +81,14 @@ class _AppManagerState extends State<AppManager> with WidgetsBindingObserver {
       ],
       child: MultiProvider(
         providers: [
-          Provider<AuthenticationProvider>(
+          Provider<IAuthenticationProvider>(
             create: (_) => AuthenticationProvider(
               networkClient: networkClient,
               session: _sessionCubit,
             ),
           ),
-          Provider<SecureRepository>(
-            create: (_) => _secureRepository,
-          ),
-          Provider<PushNotificationHandler>(
+          Provider<ISecureRepository>(create: (_) => _secureRepository),
+          Provider<IPushNotificationHandler>(
             lazy: false,
             create: (context) => PushNotificationHandler(
               firebaseMessaging: FirebaseMessaging.instance,

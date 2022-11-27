@@ -3,17 +3,21 @@ import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'logger.dart';
 
-class PushNotificationHandler {
+abstract class IPushNotificationHandler {
+  Future<void> init(BuildContext context);
+}
+
+class PushNotificationHandler implements IPushNotificationHandler {
   final FirebaseMessaging _firebaseMessaging;
 
   PushNotificationHandler({
     required FirebaseMessaging firebaseMessaging,
   }) : _firebaseMessaging = firebaseMessaging;
 
+  @override
   Future<void> init(BuildContext context) async {
     var token = await _firebaseMessaging.getToken();
     print('FCM: $token');

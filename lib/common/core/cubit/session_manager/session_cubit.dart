@@ -1,4 +1,3 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:local_auth/local_auth.dart';
@@ -14,7 +13,7 @@ import '../user_role_manager/user_role.dart';
 part 'session_state.dart';
 
 class SessionCubit extends Cubit<SessionState> {
-  final SecureRepository _secureRepository;
+  final ISecureRepository _secureRepository;
   final PublishSubject<void> _logoutEvent$ = PublishSubject<void>();
 
   /// User id.
@@ -48,7 +47,7 @@ class SessionCubit extends Cubit<SessionState> {
   /// Selected biometric type during Sign In or Onboarding process.
   Future<String?> get biometricType async => _secureRepository.getFromStorage(StorageConstants.biometricType);
 
-  SessionCubit({required SecureRepository secureRepository})
+  SessionCubit({required ISecureRepository secureRepository})
       : _secureRepository = secureRepository,
         super(const SessionState());
 
@@ -116,8 +115,7 @@ class SessionCubit extends Cubit<SessionState> {
   }
 
   void _clearTmpAuth() {
-    _secureRepository
-      .delete(key: StorageConstants.tmpTokenKey);
+    _secureRepository.deleteFromStorage(StorageConstants.tmpTokenKey);
   }
 
   /// Removes user info and logouts the user.

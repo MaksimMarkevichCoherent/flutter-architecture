@@ -18,7 +18,7 @@ part 'biometric_state.dart';
 class BiometricCubit extends Cubit<BiometricState> {
   final _biometricAuthRequested$ = PublishSubject<bool>();
   final auth = LocalAuthentication();
-  final SecureRepository secureRepository;
+  final ISecureRepository secureRepository;
   final SessionCubit session;
 
   BiometricCubit({

@@ -2,7 +2,11 @@ import '../../common/core/cubit/session_manager/session_cubit.dart';
 
 import '../network_client.dart';
 
-class AuthenticationProvider {
+abstract class IAuthenticationProvider {
+
+}
+
+class AuthenticationProvider implements IAuthenticationProvider {
   final NetworkClient _networkClient;
   final SessionCubit _session;
 
