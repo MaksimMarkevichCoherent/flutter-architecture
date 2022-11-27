@@ -7,6 +7,42 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:1074612101519:android:90b80f0d7248a7cabaebfa",
+        "android_client_info": {
+          "package_name": "com.architecture.tapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074612101519-obo1j8gpimrchdnaejpqn5jcpe8dtish.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDjY6CwC0z2eXJZlqv39zE2NRD3HE4uo4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074612101519-obo1j8gpimrchdnaejpqn5jcpe8dtish.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1074612101519-5cq8fdo44loijvdkbhn2bbmj9unpv4gr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.architecture.tapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:1074612101519:android:fe9a9b9f5254a970baebfa",
         "android_client_info": {
           "package_name": "com.tapp.tapp"
@@ -29,6 +65,13 @@
             {
               "client_id": "1074612101519-obo1j8gpimrchdnaejpqn5jcpe8dtish.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1074612101519-5cq8fdo44loijvdkbhn2bbmj9unpv4gr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.architecture.tapp"
+              }
             }
           ]
         }

@@ -1,4 +1,4 @@
-package com.tapp.tapp
+package com.architecture.tapp
 
 import io.flutter.embedding.android.FlutterActivity
 

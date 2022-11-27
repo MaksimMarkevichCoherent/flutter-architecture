@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tapp.tapp">
+    package="com.architecture.tapp">
    <application
         android:label="tapp"
         android:name="${applicationName}"
