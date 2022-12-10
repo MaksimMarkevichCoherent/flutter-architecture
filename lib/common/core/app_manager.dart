@@ -36,7 +36,7 @@ class AppManager extends StatefulWidget {
 }
 
 class _AppManagerState extends State<AppManager> with WidgetsBindingObserver {
-  late ISecureRepository _secureRepository;
+  late SecureRepository _secureRepository;
   late SessionCubit _sessionCubit;
 
   @override
@@ -81,14 +81,14 @@ class _AppManagerState extends State<AppManager> with WidgetsBindingObserver {
       ],
       child: MultiProvider(
         providers: [
-          Provider<IAuthenticationProvider>(
+          Provider<AuthenticationProvider>(
             create: (_) => AuthenticationProvider(
               networkClient: networkClient,
               session: _sessionCubit,
             ),
           ),
-          Provider<ISecureRepository>(create: (_) => _secureRepository),
-          Provider<IPushNotificationHandler>(
+          Provider<SecureRepository>(create: (_) => _secureRepository),
+          Provider<PushNotificationHandler>(
             lazy: false,
             create: (context) => PushNotificationHandler(
               firebaseMessaging: FirebaseMessaging.instance,

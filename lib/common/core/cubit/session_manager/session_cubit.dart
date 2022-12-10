@@ -13,7 +13,7 @@ import '../user_role_manager/user_role.dart';
 part 'session_state.dart';
 
 class SessionCubit extends Cubit<SessionState> {
-  final ISecureRepository _secureRepository;
+  final SecureRepository _secureRepository;
   final PublishSubject<void> _logoutEvent$ = PublishSubject<void>();
 
   /// User id.
@@ -47,7 +47,7 @@ class SessionCubit extends Cubit<SessionState> {
   /// Selected biometric type during Sign In or Onboarding process.
   Future<String?> get biometricType async => _secureRepository.getFromStorage(StorageConstants.biometricType);
 
-  SessionCubit({required ISecureRepository secureRepository})
+  SessionCubit({required SecureRepository secureRepository})
       : _secureRepository = secureRepository,
         super(const SessionState());
 
