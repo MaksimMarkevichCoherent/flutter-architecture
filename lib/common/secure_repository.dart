@@ -4,7 +4,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'core/utils/logger.dart';
 
 class SecureRepository {
-  final _flutterSecureStorage = const FlutterSecureStorage();
+  final FlutterSecureStorage _flutterSecureStorage;
+
+  const SecureRepository({
+    required FlutterSecureStorage flutterSecureStorage,
+  }) : _flutterSecureStorage = flutterSecureStorage;
 
   /// Can throw a PlatformException.
   Future<void> addToStorage(String key, String value) async {
@@ -46,7 +50,7 @@ class SecureRepository {
     const key = 'first_run';
     final prefs = await SharedPreferences.getInstance();
 
-    if(prefs.getBool(key) ?? true) {
+    if (prefs.getBool(key) ?? true) {
       await clearSecureStorage();
       prefs.setBool(key, false);
     }

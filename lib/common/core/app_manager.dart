@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:tapp/common/core/utils/push_notification_handler.dart';
 
@@ -42,7 +43,7 @@ class _AppManagerState extends State<AppManager> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    _secureRepository = SecureRepository()..clearSecureStorageIfAppReinstalled();
+    _secureRepository = const SecureRepository(flutterSecureStorage: FlutterSecureStorage())..clearSecureStorageIfAppReinstalled();
     _sessionCubit = SessionCubit(secureRepository: _secureRepository)..init();
     WidgetsBinding.instance.addObserver(this);
   }
